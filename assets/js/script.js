@@ -64,7 +64,6 @@ var completeEditTask = function(taskName, taskType, taskId) {
     };
 
     
-    
     alert("Task Updated!");
     formEl.removeAttribute("data-task-id");
     document.querySelector("#save-task").textContent = "Add Task";
@@ -206,6 +205,15 @@ var deleteTask = function(taskId) {
     + taskId 
     + "']");
     taskSelected.remove();
+
+    var updatedTaskArr = [];
+
+    for (var i = 0; i < tasks.length; i++) {
+        if(tasks[i].id !== parseInt(tasks[i])) {
+            updatedTaskArr.push(tasks[i]);
+        }
+    }
+    tasks = updatedTaskArr;
 };
 var dragTaskHandler = function(event) {
     var taskId = event.target.getAttribute("data-task-id");
